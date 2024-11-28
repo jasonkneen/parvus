@@ -47,21 +47,42 @@ conda install -c pytorch faiss-gpu
 
 ### Command Line Interface
 
+The package provides a command-line interface for basic operations:
+
+#### Compressing Data
+
 ```bash
-# Launch the GUI
+python -m parvus --input data.json --output compressed_output
+```
+
+The input JSON file should have the following format:
+```json
+{
+    "messages": [
+        {
+            "id": "1",
+            "content": "Your text content here"
+        }
+    ]
+}
+```
+
+#### Searching Compressed Data
+
+```bash
+python -m parvus --load compressed_output --query "your search query"
+```
+
+#### Starting the GUI
+
+```bash
 python -m parvus --gui
+```
 
-# Start the API server
+#### Starting the API Server
+
+```bash
 python -m parvus --server
-
-# Compress a file
-python -m parvus -i data.json -o compressed_output/
-
-# Load compressed data and query
-python -m parvus -l compressed_output/ -q "your search query"
-
-# Show help
-python -m parvus --help
 ```
 
 ### Starting the GUI
@@ -168,6 +189,25 @@ Performance metrics on a typical dataset:
 - Compression Ratio: ~5x (varies by data)
 - Query Time: <100ms (with GPU)
 - Memory Usage: Proportional to dataset size
+
+## Development
+
+### Creating a New Release
+
+To publish a new version to PyPI:
+
+1. Update the version number in:
+   - `setup.py`
+   - `parvus/__init__.py`
+
+2. Create and push a new tag:
+```bash
+git tag v0.1.x
+git push origin v0.1.x
+```
+
+3. Go to GitHub and create a new release using the tag.
+   The GitHub Action will automatically build and publish to PyPI.
 
 ## License
 

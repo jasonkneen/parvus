@@ -6,7 +6,6 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -73,6 +72,10 @@ htmlcov/
 .ipynb_checkpoints
 *.ipynb
 
+# Test files
+test_data.*
+compressed_output/
+
 # PyPI configuration
 .pypirc
 
@@ -91,3 +94,6 @@ var/
 wheels/
 .installed.cfg
 *.egg
+dist/
+build/
+*.egg-info/
